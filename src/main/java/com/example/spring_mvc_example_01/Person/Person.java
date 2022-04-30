@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
@@ -15,13 +16,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Person{
+public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Setter(value = AccessLevel.PROTECTED)
     private long id;
+    @NonNull
     private String name;
+    @NonNull
     private int age;
 
     public Person(String name, int age) {

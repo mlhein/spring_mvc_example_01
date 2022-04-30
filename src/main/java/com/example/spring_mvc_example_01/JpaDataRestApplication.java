@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class JpaDataRestApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(JpaDataRestApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(JpaDataRestApplication.class, args);
+    }
 }

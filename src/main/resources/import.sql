@@ -1,8 +1,10 @@
--- INSERT INTO person VALUES (1, 'test0', 'test');
--- INSERT INTO person VALUES (2, 'test1', 'test');
--- INSERT INTO person VALUES (3, 'test2', 'test');
--- INSERT INTO person VALUES (4, 'test3', 'test');
--- INSERT INTO person VALUES (5, 'test4', 'test');
--- INSERT INTO person VALUES (6, 'test5', 'test');
--- INSERT INTO person VALUES (7, 'test6', 'test');
-INSERT INTO person VALUES (8, 1, 'test7');
+INSERT INTO person (id, name, age) VALUES (10, 'test0', 2);
+INSERT INTO person (id, name, age) VALUES (20, 'test1', 2);
+INSERT INTO person (id, name, age) VALUES (30, 'test2', 2);
+INSERT INTO person (id, name, age) VALUES (40, 'test3', 2);
+INSERT INTO person (id, name, age) VALUES (50, 'test4', 2);
+INSERT INTO person (id, name, age) VALUES (60, 'test5', 2);
+INSERT INTO person (id, name, age) VALUES (70, 'test6', 2);
+INSERT INTO person (id, name, age) VALUES (80, 'test7', 2);
+INSERT INTO user (id, username, password, role) VALUES (10, 'user', '$2a$12$Nfk2J7spq.IogGR7AobIbOjj8V5rHsCuUDCRT0NtN49Cd3Fap8wuC', 'USER');
+INSERT INTO user (id, username, password, role) VALUES (20, 'admon', '$2a$12$Nfk2J7spq.IogGR7AobIbOjj8V5rHsCuUDCRT0NtN49Cd3Fap8wuC', 'ADMIN');

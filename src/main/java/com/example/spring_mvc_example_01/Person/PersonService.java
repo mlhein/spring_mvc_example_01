@@ -12,8 +12,8 @@ public class PersonService {
     PersonRepository personRepository;
 
     // Create a person and add to JPA repo
-    public void CreatePerson(Person person){
+    public void CreatePerson(Person person) {
         personRepository.save(person);
     }
-    
+
 }
