@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -20,25 +21,36 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // http.csrf().disable();
-        // http.headers().frameOptions().disable();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
         http.authorizeRequests()
                 .antMatchers("/addperson").hasAnyAuthority("ADMIN")
                 .antMatchers("/logout").permitAll()
                 .antMatchers("/login").permitAll()
+                .antMatchers("/register").permitAll()
                 .antMatchers("/", "/index").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated()
+                .and()
+                .exceptionHandling().accessDeniedPage("/accessdenied")
+                .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
+        ;
         http.logout();
         // .logoutUrl("/logout");
         http.formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/");
+                .defaultSuccessUrl("/person");
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler(){
+        return new CustomAccessDeniedHandler();
     }
 
     // @Override
