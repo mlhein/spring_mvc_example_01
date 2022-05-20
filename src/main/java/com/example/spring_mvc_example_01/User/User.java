@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,7 +21,7 @@ import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
-@Setter
+ @Setter
 @Getter
 @NoArgsConstructor
 @Table(name = "user")
@@ -28,9 +30,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NonNull
+    @NotBlank
+    @NotEmpty
     private String username;
-    @NonNull
+    @NotBlank
+    @NotEmpty
     private String password;
     @NonNull
     private String role;

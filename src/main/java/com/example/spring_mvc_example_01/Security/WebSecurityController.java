@@ -1,6 +1,7 @@
 package com.example.spring_mvc_example_01.Security;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import com.example.spring_mvc_example_01.Error.UserAlreadyExistException;
 import com.example.spring_mvc_example_01.User.User;
@@ -9,8 +10,8 @@ import com.example.spring_mvc_example_01.User.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,11 +49,15 @@ public class WebSecurityController {
 
     @PostMapping("/register")
     public ModelAndView register(
-            @ModelAttribute("user") @Validated User user,
+            @ModelAttribute("user") @Valid User user,
+            BindingResult bindingResult,
             HttpServletRequest request,
             Errors errors) {
 
         ModelAndView mav = new ModelAndView();
+
+        if (bindingResult.hasErrors())
+            return new ModelAndView("register", "message", "Can't register!");
 
         try {
             User registerUser = userService.registerNewUser(user);
