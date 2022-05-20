@@ -12,3 +12,4 @@ The plan is to continously develop this project to learn various aspect in sprin
 * Lombok
 * Thymeleaf
 * Devtools
+* Github action
